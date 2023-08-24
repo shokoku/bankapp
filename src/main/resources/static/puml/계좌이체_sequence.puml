@@ -1,0 +1,33 @@
+@startuml
+title "Sanus Bank 계좌 이체 시퀀스 다이어 그램"
+
+actor Customer as customer
+participant "Sanus Bank" as bank
+database database
+participant "financial supervisory service" as fss
+
+customer -> bank : 계좌 이체 요청
+
+alt authentication failure
+    bank --> customer : "계정 인증 실패 응답"
+else account verification failure
+    bank --> customer : "계좌 검증 실패 응답"
+else normal transfer
+    alt transfer too large amount
+        bank -> fss: "너무 큰 금액 이체 신고"
+        alt forbidden
+            fss --> bank : "이체 금지 통지"
+            bank --> customer : "이체 금지 응답"
+        else
+            bank -> database : "출금 계좌 출금 기록 저장"
+            bank -> database : "입금 계좌 입금 기록 저장"
+            bank --> customer : "성공 응답"
+        end
+    else 
+        bank -> database : "출금 계좌 출금 기록 저장"
+        bank -> database : "입금 계좌 입금 기록 저장"
+        bank --> customer : "성공 응답"
+    end
+end
+
+@enduml
