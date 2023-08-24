@@ -14,8 +14,8 @@ package sanus_bank {
 }
 
 customer --> UC1
-UC1.> UC2 : include
-UC2.> UC3 : include
+UC1 .> UC2 : include
+UC2 .> UC3 : include
 
 @enduml
 

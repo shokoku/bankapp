@@ -1,2 +1,5 @@
-package kr.sanus.bankapp.employee;public class EmployeeRepository {
-}
+package kr.sanus.bankapp.employee;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {}

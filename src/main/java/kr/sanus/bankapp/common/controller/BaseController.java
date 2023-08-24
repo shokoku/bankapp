@@ -1,2 +1,13 @@
-package kr.sanus.bankapp.common.controller;public class BaseController {
+package kr.sanus.bankapp.common.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class BaseController {
+
+  @GetMapping("/")
+  public String home() {
+    return "index";
+  }
 }

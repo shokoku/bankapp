@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  db:
+    image: mariadb:10.6
+    container_name: sanusbankp
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: 8520
+      MARIADB_DATABASE: bankapp
+      MARIADB_USER: sanus
+      MARIADB_PASSWORD: 1234
+
+    volumes:
+      - ./master_db/data:/var/lib/mysql #Log,Index
+      - ./master_db/config/:/etc/mysql/conf.d
+    ports:
+      - '3306:3306'

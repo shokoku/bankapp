@@ -1,2 +1,5 @@
-package kr.sanus.bankapp.transaction;public class TransactionRepository {
-}
+package kr.sanus.bankapp.transaction;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {}

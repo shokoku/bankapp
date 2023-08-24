@@ -1,1 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/bankapp
+    username: sanus
+    password: 1234
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+devtools:
+  restart:
+    enabled: false
 
+logging:
+  level:
+    root: info
+    web: info
+    sql: error
+    org.hibernate: error
+    org.springframework: error
+    kr.sanus.bankapp: info

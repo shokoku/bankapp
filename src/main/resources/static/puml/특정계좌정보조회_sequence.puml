@@ -1,0 +1,21 @@
+@startuml
+title "Sanus Bank 특정 계좌 조회 시퀀스 다이어 그램"
+
+actor Customer as customer
+participant "Sanus Bank" as bank
+database database
+participant "financial supervisory service" as fss
+
+customer -> bank : 계좌 정보 요청
+
+alt authentication failure
+    bank -> customer : "계정 인증 실패 응답"
+
+else account verification failure
+    bank -> customer : "계좌 검증 실패 응답"
+
+else
+    bank -> database : "계좌 내역 조회"
+    bank -> customer : "계좌 정보 내역 응답"
+end
+@enduml

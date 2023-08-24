@@ -2,10 +2,11 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.2'
     id 'io.spring.dependency-management' version '1.1.2'
+    id 'com.diffplug.spotless' version '6.18.0'
 }
 
 group = 'kr.sanus'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 java {
     sourceCompatibility = '17'
@@ -17,6 +18,31 @@ configurations {
     }
 }
 
+spotless {
+    format("yaml") {
+        target("**/*.yaml", "**/*.yml")
+        prettier().configFile(".prettierrc")
+    }
+    java {
+        removeUnusedImports()
+        googleJavaFormat()
+        importOrder(
+                "java",
+                "jakarta",
+                "lombok",
+                "org.springframework",
+                "",
+                "\\#",
+                "kr.sanus.bankapp",
+                "\\#kr.sanus.bankapp"
+        )
+        indentWithTabs(2)
+        indentWithSpaces(2)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -24,6 +50,8 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'

@@ -1,0 +1,19 @@
+@startuml
+title "Sanus Bank 특정 계좌 조회"
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "customer"
+actor "employee"
+actor "system admin"
+
+package sanus_bank {
+  usecase "계좌 정보 조회" as UC1
+  usecase "계정 인증" as UC2
+}
+
+customer --> UC1
+UC1 .> UC2 : include
+
+@enduml

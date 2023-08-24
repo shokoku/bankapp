@@ -1,2 +1,5 @@
-package kr.sanus.bankapp.account;public interface AccountRepository {
-}
+package kr.sanus.bankapp.account;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AccountRepository extends JpaRepository<Account, Long> {}

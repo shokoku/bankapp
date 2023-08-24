@@ -1,13 +1,12 @@
 package kr.sanus.bankapp;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import org.junit.jupiter.api.Test;
 
 @SpringBootTest
 class BankappApplicationTests {
 
   @Test
-  void contextLoads() {
-  }
-
+  void contextLoads() {}
 }
