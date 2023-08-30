@@ -11,9 +11,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+
 devtools:
   restart:
     enabled: false
@@ -26,3 +24,7 @@ logging:
     org.hibernate: error
     org.springframework: error
     kr.sanus.bankapp: info
+springfox:
+  documentation:
+    swagger-ui:
+      base-url: /swagger-ui/
