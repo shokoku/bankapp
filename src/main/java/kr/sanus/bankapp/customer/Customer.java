@@ -23,6 +23,4 @@ public class Customer extends BaseEntity {
   private int age;
   private String email;
   private String organization;
-  private LocalDateTime createdAt;
-  private LocalDateTime updatedAt;
 }
